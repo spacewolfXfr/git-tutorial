@@ -1,10 +1,11 @@
 # Available components
 
-Autopilots: no autopilot
+Autopilots: no autilot
 
-Batteries: Lipo 6S (propulsion), Lipo 2s (avionics)
+Batteries: Lipo 6S (p
+ulsion), Lipo 2s (avionics)
 
-3D printer materials: PETG 
+3D printer matials: PETG 
 
-Vis M5: 25mm
+Vis M5: 25m
 
