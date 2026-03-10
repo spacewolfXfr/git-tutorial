@@ -1,6 +1,7 @@
 Fixedwings:
 - Zagi
 - CANBird
+- Solius
 
 
 
