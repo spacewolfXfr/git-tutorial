@@ -81,29 +81,36 @@ describing in more details. Since you made only small changes, you can do everyt
 git commit -m "Add my new amazing drone."
 ```
 
-You can do that multiple time to be as ease with the process.
+You can do that multiple time (for each change) to be as ease with the process.
 
 ## Working collaboratively
 
-Alice and Bob push:
-`git push`
+Either you or your mate *push* your changes on the *remote*: the online GitHub server.
+```sh
+git push
+```
 
-The second to push will fail to push: your repo is not up to date !
-`git pull`
+The second to push will fail to push: your repo is not up-to-date ! You need to *pull* first the changes to your computer.
+```sh
+git pull
+```
+You now have to reconcile your changes with what your mate did. Hopefully, it will be easy...
 
-There are a few strategies to merge changes with your own, just configure this one, its the easiest to work with:
-`git config pull.rebase false`
+There are a few strategies to merge changes with your own, and Git suggest you to set a default one. The easiest (and default recommended) is to *fast-forward* and *merge*. Say Git to do that:
+```sh
+git config pull.rebase false
+```
 
-Run git pull again:
-`git pull`
+Run git pull again, and hopefully everything works:
+```sh
+git pull
+```
 
-Git automaticaly merge your changes with the others, just validate the merge commit message (you can change it if you like).
+Git automatically merge your changes with the others, just validate the merge commit message (you can change it if you like).
 
-You can now push:
-`git push`
+You can now push: `git push`
 
 The other one can `git pull` to get your changes
-
 
 ## Managing conflicts
 
