@@ -6,4 +6,4 @@ Fixedwings:
 
 Multirotors:
 - Cobra
-
+- rotorcraft
