@@ -10,6 +10,16 @@ In this tutorial we will give you the basics of Git, one of the most popular Ver
 
 ## What is Git ?
 
+<figure>
+  <img
+  src="overview-images/git.png"
+  alt="This is Git. No idea how to use it. If you get errors, save your work elsewhere, delete the project, and download a fresh copy.">
+  <p><i>
+  "If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of 'It's really pretty simple, just think of branches as...' and eventually you'll learn the commands that will fix everything."</it>
+  </i></p>
+  <figcaption><a href="https://xkcd.com/1597/">XKCD:Git</a></figcaption>
+</figure>
+
 Git is a Version Control System (VCS), that is a system able to maintain different versions of a *repository* (a collection of files). It is useful as it tracks safely and efficiently the different changes you can do to whatever project you are working on, regardless of its nature (code, report, slides...).
 
 ![Versioning](overview-images/snapshots.png)
