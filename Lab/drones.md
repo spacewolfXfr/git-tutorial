@@ -1,6 +1,6 @@
 Fixedwings:
 - Zagi
-- Seeschwalbe
+- Seeschwalbe is bad 
 
 
 
