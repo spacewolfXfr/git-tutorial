@@ -1,10 +1,9 @@
 Fixedwings:
 - Zagi
-- Seeschwalbe
+- Seeschwalbe is great
 
 
 
 Multirotors:
 - Cobra
 - Kamikaze
-
