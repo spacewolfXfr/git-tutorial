@@ -1,55 +1,131 @@
 # Git basic training
 
-Initial state of the repo:
-- drones.md : list of all drones
-- components.md : the components available in the workshop
+You have here the instructions for our tutorial.
 
-You can run `git status` between each operations to wtach the state of your local repository.
-At first, use the comand line only, then you will be able to use a GUI to make commits.
+All Git commands are of the form `git <verb> <arguments>`. We will see in this tutorial the main verbs (or sub-commands).
+The first you should learn is `help`: typing `git help` will give you an overview of the main Git commands. Typing `git help <verb>` (or `git <verb> --help`) will give you specific details about the associated sub-command.
 
-## Setting up your repo
+If it is your first time ever using Git, you will have to configure your identity by running the following commands:
 
-Clone the repository from Github:
-`git clone git@github.com:spacewolfXfr/git-tutorial.git`
+```sh
+git config --global user.name "Your Name Comes Here"
+git config --global user.email you@yourdomain.example.com
+```
 
-Create a branch to work with a mate:
-`git branch alice_bob`
-`git switch alice_bob`
+They respectively register your name and email, which are required when making changes: one must know who is responsible for adding great content ! (or screwing everything up...)
+
+Now that you are ready, lets clone the repository we will use for this tutorial.
+
+## Getting the repo
+
+Clone the repository from GitHub:
+```sh
+git clone git@github.com:spacewolfXfr/git-tutorial.git
+```
+Check that everything is alright by typing
+```sh
+git status
+```
+You should do that regularly to inspect the state of your *working directory*, *staging area* and *repository*.
+
+The file you will be working on are in the `Lab` folder. Initially, it contains:
+
+- `drones.md` : list of all drones
+- `components.md` : the components available in the workshop
+- `cobra.md`,`zagi.md` : two drones we have here at the lab
+
+You can also take a look at what changes were done up to this point by typing:
+```sh
+git log
+```
+(This is mostly to show what can be done from the command line... A GUI is way more practical to take a quick look at a repository history.)
+
+## Setting up your branch
+
+You will set up a branch with your mate. This will allow you to make your changes without being bothered by everyone else in the room, only your mate :)
+
+Chose a name with your mate, as you will work together on a set of changes. Create your own branch by:
+```sh
+git branch our_beautiful_branch
+```
+By typing `git branch` alone, you should have a list of branches, looking like:
+```
+* main
+  our_beautiful_branch
+```
+The star (*) means that you are currently on branch `main` (the default) one. You now have to switch on your newly created one by typing:
+```sh
+git switch our_beautiful_branch
+```
+(You can simultaneously create and switch to a new branch by typing `git switch -c a_brand_new_branch`)
+
+Now publish your branch by doing:
+```sh
+git push origine our_beautiful_branch -u
+```
+`push` is the verb to push your `.git` repository to a remote. `origin` is the name of the remote. And `our_beautiful_branch` is the name of the branch you want to push. The added option `-u` links your local branch to `origin` (it should be kept in sync with its status on `origin`).
+
+Your mate will do
+```sh
+git fetch origin
+```
+This allows you to get the status of the `origin` remote. Since `origin` is the default remote, we could have done `git fetch`
 
 ## The Basic stuff
 
-Add the instructions concerning your new drone. Alice adds a multirotor, and Bob add a fixedwing.
-- Add a file for your drone
-- Add the name of the drone in `drones.md`
+Let's create a new drone ! We will do this very simply: pick a name and decide its type (fixed wing, rotorcraft, or any kind of hybrid). Once this is done:
 
-Stage your changes:
-`git add drones.md yourNewDrone.md`
-Then commit those changes:
-`git commit -m "Add my new amazing drone."`
+- Add a new file `<my_drone_name>.md` in `Lab`, containing the drone name (and a short description if you are inspired)
+- Modify the file `drones.md` to add your new drone to the list (create a new category if needed).
 
-You can do that multiple time to be as ease with the process.
+Ask Git what changes are registered by doing `git status` again.
+
+Stage your changes by using the `add` verb and listing the changed/new files:
+```sh
+git add drones.md <my_drone_name>.md
+```
+(Depending on which directory you are in, you may instead have to write `git add Lab/drones.md Lab/<my_drone_name>.md`)
+You can go faster by adding directly a folder; Git will add all changes in the said folder. Be cautious,
+this way you may add more than you initially intended...
+
+Then commit those changes (saving them to the repository). If you write `git commit`,
+a command line text editor will open, asking you to save a message describing the changes you made.
+It is traditionally made from a short title on one line, and if needed a longer paragraph below
+describing in more details. Since you made only small changes, you can do everything in one line:
+```sh
+git commit -m "Add my new amazing drone."
+```
+
+You can do that multiple time (for each change) to be as ease with the process.
 
 ## Working collaboratively
 
-Alice and Bob push:
-`git push`
+Either you or your mate *push* your changes on the *remote*: the online GitHub server.
+```sh
+git push
+```
 
-The second to push will fail to push: your repo is not up to date !
-`git pull`
+The second to push will fail to push: your repo is not up-to-date ! You need to *pull* first the changes to your computer.
+```sh
+git pull
+```
+You now have to reconcile your changes with what your mate did. Hopefully, it will be easy...
 
-There are a few strategies to merge changes with your own, just configure this one, its the easiest to work with:
-`git config pull.rebase false`
+There are a few strategies to merge changes with your own, and Git suggest you to set a default one. The easiest (and default recommended) is to *fast-forward* and *merge*. Say Git to do that:
+```sh
+git config pull.rebase false
+```
 
-Run git pull again:
-`git pull`
+Run git pull again, and hopefully everything works:
+```sh
+git pull
+```
 
-Git automaticaly merge your changes with the others, just validate the merge commit message (you can change it if you like).
+Git automatically merge your changes with the others, just validate the merge commit message (you can change it if you like).
 
-You can now push:
-`git push`
+You can now push: `git push`
 
 The other one can `git pull` to get your changes
-
 
 ## Managing conflicts
 
