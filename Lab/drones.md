@@ -6,4 +6,5 @@ Fixedwings:
 
 Multirotors:
 - Cobra
+- Kamikaze
 
